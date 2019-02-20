@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="jumbotron">
+        <img src="images/pablo-merchan-montes-burger.jpg" width="auto" height="auto">
+        <h1>Garden of Eatin'</h1>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+            <div class="panel-panel default">
+                <h1>Burgers Are Delicious</h1>
+                <ul class="list-group">
+                {{#each burger}}
+                {{#unless this.eaten}}
+                <li class="list-group-item">
+                <div class="input-group">
+                <p class="lead">{{this.burger_name}}</p>
+                <span class="input-group-btn">
+                    <form action="burger/update/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="eaten" value="true">
+                        <button class="btn btn-default btn-lg" type="submit">Eat it! Just eat it!</button>
+                    </form>
+                </span>
+                </div>
+                </li>
+                {{/unless}}
+                {{/each}}
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <h1>Eaten Burgers</h1>
+        <div class="panel panel-default">
+        <ul class="list-group">
+        {{#each burger}}
+            {{#if this.eaten}}
+            <li class="list-group-item">
+            <p class="lead">{{this.burger_name}}</p>
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+        <p class="lead">Don't see your fave? Add your burger.</p>
+
+        <form class="create-update-form" action="burger/create" method="POST">
+        <div class="form-group">
+        <textarea class="form-control input-lg" type="text" name="burger_name" row="3"></textarea>
+        </div>
+        <button class="btn btn-default btn-lg" type="submit">Add</button>
+        </form>
+        </div>
+
+    </div>
+</div>
