@@ -1,7 +1,5 @@
 var express = require("express");
-
 var router = express.Router();
-
 var burger = require("../models/burger.js");
 
 
@@ -21,7 +19,7 @@ router.post("/burger/create", function (req, res) {
 	], [
 			req.body.burger_name
 		], function (data) {
-			res.redirect("/burger");
+			res.redirect("/");
 		});
 });
 
@@ -32,7 +30,7 @@ router.put("/burger/update/:id", function (req, res) {
 	burger.updateOne({
 		"eaten": req.body.devoured
 	}, condition, function (data) {
-		res.redirect("/burger")
+		res.redirect("/")
 	});
 });
 
